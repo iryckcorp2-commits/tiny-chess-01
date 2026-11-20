@@ -15,33 +15,34 @@ Strength (local practice trials, 6 games vs the house gauntlet, this build):
 
 | trial | score | Elo |
 |-------|-------|-----|
-| 0 | 5.0 / 6 | 1,654 |
-| 1 | 3.0 / 6 | 1,279 |
-| 2 | 5.5 / 6 | 1,809 |
+| 0 | TBD | TBD |
+| 1 | TBD | TBD |
+| 2 | TBD | TBD |
 
-Total: **13.5 / 18**. Practice mean: **1,581** (house baseline sunfish: 1,365).
+Total: **TBD**. Practice mean: **TBD** (house baseline sunfish: 1,365).
 
-## Inside (packed source, 10,147 bytes unpacked, 4,088 bytes packed)
+## Inside (packed source, TBD bytes unpacked, TBD bytes packed)
 
-- 0x88 board, piece lists, deterministic Zobrist hashing
-- Tapered PeSTO evaluation (middlegame / endgame tables, king taper kept)
+- 0x88 board, deterministic Zobrist hashing
+- Tapered evaluation (middlegame / endgame material and piece-square tables, king taper, bishop pair)
 - Alpha-beta + transposition table + null-move pruning + LMR with re-search +
   killers + history + quiescence (captures / promotions / check evasions)
-- Fixed 80,000 nodes per move (deterministic, ~2.6 s per move)
+- Fixed 80,000 nodes per move (deterministic, ~3.5 s per move)
 
-Verification (this build): perft all OK on 6 positions (start, kiwipete,
-pos3-ep, pos4-promo, pos5, pos6); mate-in-1 found (Qh5xf7, 2,766 nodes);
+Verification (this build): perft all OK on 6 positions (start d1-d4
+20/400/8902/197281, kiwipete 48/2039/97862, pos3-ep 14/191/2812/43238,
+pos4-promo 6/264/9467, pos5 44/1442/60371, pos6 46/2079/89890);
+mate-in-1 found (Qh5xf7, 2,725 nodes);
 UCI roundtrip OK; identical move and node count on repeated runs.
 
 ## Reproduce
 
 ```sh
-node kit/cli/makefun.mjs compress src-engine2.py --out main.py
+node kit/cli/makefun.mjs compress src.py --out main.py
 ls -l main.py   # <= 4096 bytes
 ```
 
 ## License
 
-MIT. The PeSTO evaluation tables are from the public-domain PeSTO
-evaluation function (Ronald Friederich / RofChade). This engine is an
-original implementation; no code is copied from any other engine.
+MIT. This engine is an original implementation written from scratch for
+this entry; no code is copied from any other engine.
