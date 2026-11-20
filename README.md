@@ -15,19 +15,19 @@ Strength (local practice trials, 6 games vs the house gauntlet, this build):
 
 | trial | score | Elo |
 |-------|-------|-----|
-| 0 | TBD | TBD |
-| 1 | TBD | TBD |
-| 2 | TBD | TBD |
+| 0 | 4.0 / 6 | 1,451 |
+| 1 | 4.0 / 6 | 1,451 |
+| 2 | 4.5 / 6 | 1,545 |
 
-Total: **TBD**. Practice mean: **TBD** (house baseline sunfish: 1,365).
+Total: **12.5 / 18**. Practice mean: **1,482** (house baseline sunfish: 1,365).
 
-## Inside (packed source, TBD bytes unpacked, TBD bytes packed)
+## Inside (packed source, 11,428 bytes unpacked, 4,069 bytes packed)
 
 - 0x88 board, deterministic Zobrist hashing
 - Tapered evaluation (middlegame / endgame material and piece-square tables, king taper, bishop pair)
 - Alpha-beta + transposition table + null-move pruning + LMR with re-search +
   killers + history + quiescence (captures / promotions / check evasions)
-- Fixed 80,000 nodes per move (deterministic, ~3.5 s per move)
+- Fixed 80,000 nodes per move (deterministic, ~2.6 s per move, max 7.9 s in trials)
 
 Verification (this build): perft all OK on 6 positions (start d1-d4
 20/400/8902/197281, kiwipete 48/2039/97862, pos3-ep 14/191/2812/43238,
