@@ -9,13 +9,17 @@ A single-file Python chess engine that fits in **4,096 bytes** (packed with `mak
 
 `main.py` is the whole engine. It speaks the make.fun game protocol over HTTP
 (`MAKEFUN_ENV_URL`): it fetches the game in play, picks the best move with a
-fixed 50,000-node search, and posts the move back.
+fixed 80,000-node search, and posts the move back.
 
 Strength (local practice trials, 6 games vs the house gauntlet):
 
 | trial | score | Elo |
 |-------|-------|-----|
-| 0 | 4.5 / 6 | 1,545 (v1) |
+| 0 | 5.0 / 6 | 1,654 |
+| 1 | 5.0 / 6 | 1,654 |
+| 2 | 5.0 / 6 | 1,654 |
+
+Practice mean: **1,654** (house baseline sunfish: 1,365).
 
 ## Inside (packed source, ~9.9 KB unpacked)
 
@@ -23,7 +27,7 @@ Strength (local practice trials, 6 games vs the house gauntlet):
 - Tapered PeSTO evaluation (middlegame / endgame tables, king taper kept)
 - Alpha-beta + transposition table + null-move pruning + LMR + killers +
   history + quiescence (captures / promotions / check evasions)
-- Fixed 50,000 nodes per move (deterministic, ~1.5–2.5 s per move)
+- Fixed 80,000 nodes per move (deterministic, ~2.7 s per move)
 
 ## Reproduce
 
